@@ -1,15 +1,15 @@
 import React from "react";
 import RemoveBtn from "./RemoveBtn";
 import Link from "next/link";
-import {HiPencil, HiPencilAlt} from "react-icons/hi";
+import { HiPencil, HiPencilAlt } from "react-icons/hi";
 
 
 
 const getRestaurants = async () => {
     try {
-        const res =  await fetch('http://localhost:3000/api/restaurants', {cache: "no-store"});
+        const res = await fetch('http://localhost:3000/api/restaurants', { cache: "no-store" });
 
-        if(!res.ok) {
+        if (!res.ok) {
             throw new Error('Failed to fetch topics');
         }
 
@@ -20,30 +20,36 @@ const getRestaurants = async () => {
 }
 
 export default async function RestaurantsList() {
-    const { restaurants } = await getRestaurants();
+    try {
+        const { restaurants } = await getRestaurants();
+        return (
+            <>
+                {restaurants.map((restaurant: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; starts: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; isOpen: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; numberBranches: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; _id: string; }) => (
+                    <div key={restaurant._id} className={"p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"}>
+                        <div>
+                            <h2 className={"font-bold text-2xl"}>{restaurant.name}</h2>
+                            <div className="grid grid-cols-1 divide-y gap-x-5">
+                                <div><label className={"font-semibold"}>Starts: </label> {restaurant.starts}</div>
+                                <div><label className={"font-semibold"}>It is open? </label> {restaurant.isOpen.toString()}</div>
+                                <div><label className={"font-semibold"}>Number of branches: </label> {restaurant.numberBranches}</div>
+                                {/*{restaurant._id}*/}
+                            </div>
+                        </div>
 
-    return (
-        <>
-            {restaurants.map((restaurant: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; starts: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; isOpen: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; numberBranches: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode; _id: string; }) => (
-                <div key={restaurant._id} className={"p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"}>
-                    <div>
-                        <h2 className={"font-bold text-2xl"}>{restaurant.name}</h2>
-                        <div className="grid grid-cols-1 divide-y gap-x-5">
-                            <div><label className={"font-semibold"}>Starts: </label> {restaurant.starts}</div>
-                            <div><label className={"font-semibold"}>It is open? </label> {restaurant.isOpen.toString()}</div>
-                            <div><label className={"font-semibold"}>Number of branches: </label> {restaurant.numberBranches}</div>
-                            {/*{restaurant._id}*/}
+                        <div className={"flex gap-2"}>
+                            <RemoveBtn idRestaurant={restaurant._id} />
+                            <Link href={`/editRestaurant/${restaurant._id}`}>
+                                <HiPencilAlt size={24} />
+                            </Link>
                         </div>
                     </div>
+                ))}
+            </>
+        );
 
-                    <div className={"flex gap-2"}>
-                        <RemoveBtn idRestaurant={restaurant._id}/>
-                        <Link href={`/editRestaurant/${restaurant._id}`}>
-                            <HiPencilAlt size={24}/>
-                        </Link>
-                    </div>
-                </div>
-            ))}
-        </>
-    );
+    } catch (error) {
+        console.error("Error fetching restaurants:", error);
+    }
+    //const { restaurants } = await getRestaurants();
+
 }

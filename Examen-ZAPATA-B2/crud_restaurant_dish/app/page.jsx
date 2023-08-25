@@ -1,11 +1,12 @@
-import RestaurantsList from "../components/RestaurantsList";
-import Navbar from "../components/Navbar";
+
+import LoginForm from "../components/LoginForm";
+
 
 export default function Home() {
   return (
-      <div>
-          <Navbar/>
-          <RestaurantsList/>
-      </div>
+    <div>
+      <LoginForm />
+
+    </div>
   );
 }

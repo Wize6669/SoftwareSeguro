@@ -1,13 +1,15 @@
 import React from "react";
 import EditRestaurantForm from "../../../components/EditRestaurantForm";
-import {cache} from "browserslist";
+
 
 const getRestaurantById = async (idRestaurant) => {
-    try {
-        const res = await fetch(`http://localhost:3000/api/restaurants/${idRestaurant}`,
-            {cache: 'no-store'});
+    const apiUrl = process.env.API_URL;
 
-        if(!res.ok) {
+    try {
+        const res = await fetch(`${apiUrl}/api/restaurants/${idRestaurant}`,
+            { cache: 'no-store' });
+
+        if (!res.ok) {
             throw new Error("Failed to fetch restaurant");
         }
 
@@ -17,12 +19,12 @@ const getRestaurantById = async (idRestaurant) => {
     }
 }
 
-export default async function editRestaurant({params}) {
-    const {idRestaurant} = params;
-    const {restaurant} = await getRestaurantById(idRestaurant);
-    const {name, starts, isOpen, numberBranches} = restaurant;
+export default async function editRestaurant({ params }) {
+    const { idRestaurant } = params;
+    const { restaurant } = await getRestaurantById(idRestaurant);
+    const { name, starts, isOpen, numberBranches } = restaurant;
 
     // @ts-ignore
     return <EditRestaurantForm idRestaurant={idRestaurant} name={name}
-    starts={starts} isOpen={isOpen} numberBranches={numberBranches}/>;
+        starts={starts} isOpen={isOpen} numberBranches={numberBranches} />;
 }

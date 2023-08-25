@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../../components/Navbar";
@@ -20,7 +21,7 @@ export default function AddRestaurant() {
         }
 
         try {
-            const res = await fetch('http://localhost:3000/api/restaurants', {
+            const res = await fetch("api/restaurants", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

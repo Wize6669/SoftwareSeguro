@@ -6,8 +6,10 @@ import { HiPencil, HiPencilAlt } from "react-icons/hi";
 
 
 const getRestaurants = async () => {
+    const apiUrl = process.env.API_URL;
+
     try {
-        const res = await fetch("http://localhost:3000/api/restaurants", { cache: "no-store" });
+        const res = await fetch(`${apiUrl}/api/restaurants`, { cache: "no-store" });
 
         if (!res.ok) {
             throw new Error('Failed to fetch topics');

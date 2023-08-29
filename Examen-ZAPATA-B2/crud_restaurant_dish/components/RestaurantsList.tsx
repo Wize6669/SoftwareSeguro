@@ -7,11 +7,10 @@ import { HiPencil, HiPencilAlt } from "react-icons/hi";
 
 const getRestaurants = async () => {
     const apiUrl = process.env.API_URL;
-    //console.log("URI LISTRest", apiUrl);
 
     try {
-        //const res = await fetch(`${apiUrl}/api/restaurants`, { cache: "no-store" });
-        const res = await fetch(`https://crud-restaurant-dish-q3q4cx2fy-wize6669.vercel.app/api/restaurants`, { cache: "no-store" });
+        const res = await fetch(`${apiUrl}/api/restaurants`, { cache: "no-store" });
+        //const res = await fetch(`https://crud-restaurant-dish-q3q4cx2fy-wize6669.vercel.app/api/restaurants`, { cache: "no-store" });
 
         if (!res.ok) {
             throw new Error('Failed to fetch topics');

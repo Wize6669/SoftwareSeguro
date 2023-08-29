@@ -4,7 +4,6 @@ import EditRestaurantForm from "../../../components/EditRestaurantForm";
 
 const getRestaurantById = async (idRestaurant) => {
     const apiUrl = process.env.API_URL;
-    //console.log("Funcion editR", apiUrl);
 
     try {
         const res = await fetch(`${apiUrl}/api/restaurants/${idRestaurant}`,

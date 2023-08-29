@@ -5,7 +5,6 @@ import EditDishForm from "../../../../../components/EditDishForm";
 
 const getDishById = async (idDish) => {
     const apiUrl = process.env.API_URL;
-    //console.log("Funcion editD", apiUrl);
 
     try {
         const res = await fetch(`http://localhost:3000/api/dishes/${idDish}`,
@@ -24,8 +23,6 @@ export default async function EditDish({ params }) {
     //console.log(params.idRestaurant);
     const idRestaurant = params.idRestaurant;
     const { idDish } = params;
-    //console.log(idDish);
-
 
     const { dish } = await getDishById(idDish)
     const { name, starts, isTaxes, numberIngredients } = dish;

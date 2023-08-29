@@ -1,21 +1,21 @@
 "use client";
 
-import {HiOutlineTrash} from "react-icons/hi";
+import { HiOutlineTrash } from "react-icons/hi";
 import React from "react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
-export default function RemoveBtnDish({idDish}) {
+export default function RemoveBtnDish({ idDish }) {
     const router = useRouter();
 
     const removeRestaurant = async () => {
         const confirmed = confirm('Are you sure?');
 
-        if(confirmed) {
-            const res = await fetch(`http://localhost:3000/api/dishes?idDish=${idDish}`, {
+        if (confirmed) {
+            const res = await fetch(`/api/dishes?idDish=${idDish}`, {
                 method: "DELETE",
             });
 
-            if(res.ok) {
+            if (res.ok) {
                 router.refresh();
             } else {
                 console.log("Error deleted")
@@ -24,6 +24,6 @@ export default function RemoveBtnDish({idDish}) {
     };
 
     return <button onClick={removeRestaurant} className={"text-red-100"}>
-        <HiOutlineTrash size={"24"}/>
+        <HiOutlineTrash size={"24"} />
     </button>;
 }

@@ -16,7 +16,10 @@ export default function EditRestaurantForm({ idRestaurant, name, starts, isOpen,
         e.preventDefault();
 
         try {
-            const res = await fetch(`api/restaurants/${idRestaurant}`, {
+            //const apiUrl = process.env.API_URL;
+            //console.log("PUT", apiUrl)
+
+            const res = await fetch(`http://localhost:3000/api/restaurants/${idRestaurant}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application JSON"

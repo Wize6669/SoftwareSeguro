@@ -4,8 +4,10 @@ import React from "react";
 import RemoveBtnDish from "./RemoveBtnDish";
 
 const getDishes = async (params) => {
+    const apiUrl = process.env.API_URL;
+
     try {
-        const res = await fetch(`http://localhost:3000/api/dishes/?idRestaurant=${params}`, {
+        const res = await fetch(`${apiUrl}/api/dishes/?idRestaurant=${params}`, {
             cache: 'no-store'
         });
 

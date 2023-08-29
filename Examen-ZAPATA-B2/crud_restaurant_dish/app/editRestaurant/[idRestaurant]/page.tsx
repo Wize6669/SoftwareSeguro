@@ -4,6 +4,7 @@ import EditRestaurantForm from "../../../components/EditRestaurantForm";
 
 const getRestaurantById = async (idRestaurant) => {
     const apiUrl = process.env.API_URL;
+    //console.log("Funcion editR", apiUrl);
 
     try {
         const res = await fetch(`${apiUrl}/api/restaurants/${idRestaurant}`,
@@ -21,10 +22,16 @@ const getRestaurantById = async (idRestaurant) => {
 
 export default async function editRestaurant({ params }) {
     const { idRestaurant } = params;
-    const { restaurant } = await getRestaurantById(idRestaurant);
-    const { name, starts, isOpen, numberBranches } = restaurant;
+    try {
+        const { restaurant } = await getRestaurantById(idRestaurant);
 
-    // @ts-ignore
-    return <EditRestaurantForm idRestaurant={idRestaurant} name={name}
-        starts={starts} isOpen={isOpen} numberBranches={numberBranches} />;
+        const { name, starts, isOpen, numberBranches } = restaurant;
+
+        // @ts-ignore
+        return <EditRestaurantForm idRestaurant={idRestaurant} name={name} starts={starts} isOpen={isOpen} numberBranches={numberBranches} />;
+    } catch (error) {
+        console.log("Error: ", error);
+    }
+
+
 }

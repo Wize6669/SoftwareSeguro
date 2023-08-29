@@ -21,7 +21,7 @@ export default function AddRestaurant() {
         }
 
         try {
-            const res = await fetch("api/restaurants", {
+            const res = await fetch("/api/restaurants", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

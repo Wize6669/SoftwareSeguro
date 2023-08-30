@@ -12,8 +12,6 @@ export default function RegisterForm() {
 
     const router = useRouter();
 
-    //console.log(name)
-
     const handleSumbmit = async (e) => {
         e.preventDefault();
 
@@ -81,7 +79,7 @@ export default function RegisterForm() {
 
 
                     <Link className={"text-sm mt-3 text-right"} href={'/'}>
-                        Already have an account? <span className={"underline"}>Register</span>
+                        Already have an account? <span className={"underline"}>Login</span>
                     </Link>
                 </form>
             </div>

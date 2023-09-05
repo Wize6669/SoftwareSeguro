@@ -9,12 +9,6 @@ export async function POST(request) {
     return NextResponse.json({message: "Dish Created"}, {status: 201})
 }
 
-/*export async function GET() {
-    await connectMongoDB();
-    const dishes = await Dish.find();
-    return NextResponse.json({dishes});
-}*/
-
 export async function GET(request) {
     const idRestaurant = request.nextUrl.searchParams.get("idRestaurant");
     await connectMongoDB();

@@ -2,6 +2,7 @@ import connectMongoDB from "../../../libs/mongodb";
 import Restaurant from "../../../models/restaurant";
 import {NextResponse} from "next/server";
 
+
 export async function POST(request) {
     const {name, starts, isOpen, numberBranches} = await request.json();
     await connectMongoDB();

@@ -34,7 +34,7 @@ export default function LoginForm() {
     return (
         <div className={"grid place-items-center h-screen"}>
             <div className={"shadow-lg p-5 rounded-lg border-t-4 border-green-400"}>
-                <h1 className={"text-xl font-bold my-4"}>Login</h1>
+                <h1 className={"text-xl font-bold my-4"}>Login XD</h1>
 
                 <form onSubmit={handleSumbmit} className={"flex flex-col gap-3"}>
                     <input onChange={(e) => setEmail(e.target.value)} className={"w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40"} type="text" name="email" id="email" placeholder={"Email"} />

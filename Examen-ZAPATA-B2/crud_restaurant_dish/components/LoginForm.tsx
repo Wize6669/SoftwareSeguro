@@ -39,7 +39,7 @@ export default function LoginForm() {
                 <form onSubmit={handleSumbmit} className={"flex flex-col gap-3"}>
                     <input onChange={(e) => setEmail(e.target.value)} className={"w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40"} type="text" name="email" id="email" placeholder={"Email"} />
                     <input onChange={(e) => setPassword(e.target.value)} className={"w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40"} type="password" name="password" id="password" placeholder={"Password"} />
-                    <button className={"bg-green-600 text-white font-bold cursor-pointe px-6 py-2"}>Login</button>
+                    <button className={"bg-green-600 text-white font-bold cursor-pointe px-6 py-2"}>Login XR</button>
 
                     {error && (
                         <div className={"bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2"}>{error}</div>)
